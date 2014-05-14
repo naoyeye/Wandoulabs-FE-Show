@@ -1,0 +1,580 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+// @import "mixins/retina";
+@import "rocket";
+@import "tree";
+
+
+@mixin keyframes-floating($name, $para) {
+    @-webkit-keyframes #{$name} {
+        from {
+            -webkit-transform:translate(0, 0) rotate(30deg);
+        }
+
+        65% {
+            -webkit-transform:translate(0, $para) rotate(30deg);
+        }
+
+        to {
+            -webkit-transform: translate(0, 0px) rotate(30deg);
+        }
+    }
+
+    @-moz-keyframes #{$name} {
+        from {
+            -moz-transform:translate(0, 0px) rotate(30deg);
+        }
+
+        65% {
+            -moz-transform:translate(0, $para) rotate(30deg);
+        }
+
+        to {
+            -moz-transform: translate(0, 0px) rotate(30deg);
+        }
+    }
+
+    @-ms-keyframes #{$name} {
+        from {
+            -ms-transform:translate(0, 0px) rotate(30deg);
+        }
+
+        65% {
+            -ms-transform:translate(0, $para) rotate(30deg);
+        }
+
+        to {
+            -ms-transform: translate(0, 0px) rotate(30deg);
+        }
+    }
+
+    @-o-keyframes #{$name} {
+        from {
+            -o-transform:translate(0, 0px) rotate(30deg);
+        }
+
+        65% {
+            -o-transform:translate(0, $para) rotate(30deg);
+        }
+
+        to {
+            -o-transform: translate(0, 0px) rotate(30deg);
+        }
+    }
+
+    @keyframes #{$name} {
+        from {
+            transform:translate(0, 0px) rotate(30deg);
+        }
+
+        65% {
+            transform:translate(0, $para) rotate(30deg);
+        }
+
+        to {
+            transform: translate(0, 0px) rotate(30deg);
+        }
+    }
+}
+
+@mixin keyframes-transform-rotate($name, $para) {
+    @-webkit-keyframes #{$name} {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate($para);
+        }
+    }
+
+    @-moz-keyframes #{$name} {
+        from {
+            -moz-transform: rotate(0deg);
+        }
+
+        to {
+            -moz-transform: rotate($para);
+        }
+    }
+
+    @-ms-keyframes #{$name} {
+        from {
+            -ms-transform: rotate(0deg);
+        }
+
+        to {
+            -ms-transform: rotate($para);
+        }
+    }
+
+    @-o-keyframes #{$name} {
+        from {
+            -o-transform: rotate(0deg);
+        }
+
+        to {
+            -o-transform: rotate($para);
+        }
+    }
+
+    @keyframes #{$name} {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate($para);
+        }
+    }
+}
+
+
+body,
+html,
+.onepage-wrapper {
+    display: block;
+    position: static;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    @include transform-style(preserve-3d);
+
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    padding: 0;
+    text-align: center;
+    background: #0d3361 url(/images/bg_pattern.png) repeat;
+    font: 12px /1.8 "Roboto", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+// global
+#main {
+    position: relative;
+    top: 60%;
+    width: 100%;
+    height: 100%;
+}
+
+#wheels {
+    @include rotate(0deg);
+    @include translate3d(0, 0, 0);
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2000px;
+    height: 1000px;
+    margin-left: -1000px;
+
+    &.rotate {
+        @include animation(rotate 3s infinite linear);
+        @include animation-play-state(running);
+        // @include transition-property(top, opacity);
+        @include transition-duration(1s, 1s);
+        @include transition-timing-function(ease, ease);
+        @include transition-delay(0, 0);
+    }
+}
+
+.section {
+    @include inline-block();
+    @include transform-origin(50%, 100%);
+
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+
+}
+
+.content {
+
+}
+
+#point {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-top: -5px;
+    background: #fff;
+}
+
+// ribbon
+.ribbon-wrap {
+    @include inline-block();
+
+    position: relative;
+    top: 150px;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    &:before {
+        bottom: 30px;
+        left: -30px;
+        border-top: 30px solid #d53a26;
+        border-left: 30px dashed transparent;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    &:after {
+        bottom: 30px;
+        right: -30px;
+        border-top: 30px solid #d53a26;
+        border-left: none;
+        border-right: 30px dashed transparent;
+        border-bottom: none;
+    }
+}
+
+.ribbon-content {
+    @include inline-block();
+
+    position: relative;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    &:before {
+        bottom: 0px;
+        left: -30px;
+        border-top: none;
+        border-left: 30px dashed transparent;
+        border-right: none;
+        border-bottom: 30px solid #d53a26;
+    }
+
+    &:after {
+        bottom: 0px;
+        right: -30px;
+        border-top: none;
+        border-left: none;
+        border-right: 30px dashed transparent;
+        border-bottom: 30px solid #d53a26;
+    }
+}
+
+.ribbon {
+    position: relative;
+    padding: 20px 60px;
+    text-align: center;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        width: 80px;
+        height: 60px;
+        background: #d53a26;
+    }
+
+    &:before {
+        left: 0;
+        bottom: 0;
+    }
+
+    &:after {
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.ribbon-title {
+    position: relative;
+    z-index: 1;
+    padding: 0 30px;
+    background: #ea4e38;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    &:before {
+        top: 100%;
+        left: 0;
+        border-top: 20px solid #a12e1c;
+        border-left: 20px dashed transparent;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    &:after {
+        top: 100%;
+        right: 0;
+        border-top: 20px solid #a12e1c;
+        border-left: none;
+        border-right: 20px dashed transparent;
+        border-bottom: none;
+    }
+}
+
+
+// page 1
+.welcome-home {
+    top: -500px;
+    left: 500px;
+}
+
+.members {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    width: 100%;
+
+    .member {
+        @include inline-block();
+
+        width: 80px;
+        height: 97px;
+        margin-left: -3px;
+        background: generated-image-url('/images/member-1.png') 0 0 no-repeat;
+    }
+
+    .member-1 {
+        @include transform(rotate(-50deg) scaleX(-1));
+
+        margin-bottom: -353px;
+    }
+
+    .member-2 {
+        @include filter(sepia(100%));
+        @include transform(rotate(-40deg));
+
+        margin-bottom: -200px;
+    }
+
+    .member-3 {
+        @include filter(hue-rotate(180deg));
+        @include transform(rotate(-30deg) scaleX(-1));
+
+        margin-bottom: -170px;
+    }
+
+    .member-4 {
+        @include filter(sepia(60%));
+        @include transform(scale(0.8) rotate(0deg));
+
+        position: relative;
+        left: 100px;
+        top: -70px;
+    }
+
+    .member-5 {
+        @include filter(hue-rotate(80deg));
+        @include transform(scale(0.8) rotate(0deg) scaleX(-1));
+
+        position: relative;
+        left: 200px;
+        top: -70px;
+    }
+
+    .member-6 {
+        @include filter(hue-rotate(40deg));
+    }
+
+    .member-7 {
+        @include scaleX(-1);
+        @include filter(hue-rotate(120deg));
+
+        margin-bottom: -10px;
+    }
+
+    .member-8 {
+        @include filter(hue-rotate(150deg));
+        @include transform(rotate(10deg));
+    }
+
+    .member-9 {
+        @include filter(hue-rotate(220deg));
+        @include transform(rotate(20deg) scaleX(-1));
+
+        margin-top: -40px;
+    }
+
+    .member-10 {
+        @include filter(saturate(0%));
+        @include transform(rotate(30deg));
+    }
+
+    .member-11 {
+        @include filter(saturate(30%));
+        @include transform(rotate(40deg) scaleX(-1));
+
+        margin-bottom: -70px;
+    }
+
+    .member-12 {
+        // @include translate3d(0, 0, 0);
+        @include filter(sepia(220%));
+        // @include transform(rotate(10deg));
+
+        position: relative;
+        left: -750px;
+        width: 100px;
+        height: 100px;
+        margin-top: -370px;
+        background: generated-image-url('/images/member-2.png') 0 0 no-repeat;
+    }
+
+    .member.float {
+        @include translate3d(0, 0, 0);
+        @include animation(floating 3s infinite ease-in-out);
+    }
+}
+
+#rocket {
+    @include transform-origin(50%, 800px);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -232px;
+    margin-left: -153px;
+
+    &.rotate {
+        @include translate3d(0, 0, 0);
+
+        @include animation(rotate 23s infinite 1s linear);
+        @include animation-play-state(running);
+        // @include transition-property();
+        @include transition-duration(1s, 1s);
+        @include transition-timing-function(ease, ease);
+        @include transition-delay(0, 0);
+    }
+}
+
+.rocket_wrap {
+    @include transform(rotate(90deg) scaleY(-1));
+    @include transform-origin(50%, 50%);
+}
+
+#tree {
+    @include scale(0.5);
+
+    position: relative;
+    top: 100px;
+    left: 0;
+    z-index: 0;
+    width: 300px;
+    height: 300px;
+}
+
+// page 2
+.our-job {
+    @include rotate(90deg);
+
+    top: -500px;
+    left: 500px;
+
+
+    .member-7 {
+        @include scaleX(-1);
+        @include filter(hue-rotate(120deg));
+
+        margin-top: -100px;
+        margin-bottom: 0px;
+    }
+}
+
+// page 3
+.who-we-are {
+    @include rotate(180deg);
+
+    top: -500px;
+    left: 500px;
+}
+
+// page 4
+.we-are-looking-for {
+    @include rotate(270deg);
+
+
+    top: -500px;
+    left: 500px;
+}
+
+// end
+#end {
+    @include scale(0);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #0d3361;
+
+    .title {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -35px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        font-size: 70px;
+    }
+}
+
+// earth
+#earth {
+    @include border-radius(50%);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 1000px;
+    height: 1000px;
+    margin-top: -500px;
+    margin-left: -500px;
+    background: #6fabc5;
+
+    .land {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: generated-image-url('/images/land.png') center center no-repeat;
+        background-size: 1002px;
+    }
+}
+
+@include keyframes-floating(floating, 15px);
+
+@include keyframes-transform-rotate(rotate, -360deg);

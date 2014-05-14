@@ -1,0 +1,264 @@
+@import "compass";
+@import "compass/css3";
+
+/*=============================================
+[ Inactive State Styles ]
+==============================================*/
+#rocket {
+    display: block;
+}
+
+.rocket_inner {
+    transform: translateY(15px) translateX(-3px);
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+}
+.large_window_path {
+    transition: .2s;
+    fill: #22303e;
+}
+.small_window_path {
+    fill: #22303e;
+}
+.wing_shadow {
+    fill: #34495e;
+}
+.rocket_bottom { fill: #34495e }
+.rocket_base { fill: #34495e }
+.rocket_shadow { fill: #34495e }
+.window_grandient { stop-color: #2DCB73 }
+.window_grandient1 { stop-color: #2AC16D }
+.window_grandient2 { stop-color: #29B968 }
+.window_grandient3 { stop-color: #28B767 }
+.wing_base { fill: #34495e }
+.fire_path { fill: #FC0 }
+
+/*=============================================
+[ Hover Styles ]
+==============================================*/
+.rocket_base {
+    fill: #FFFFFF !important;
+    stroke-width: 0px !important;
+}
+.rocket_shadow {
+    fill: #EDEDED !important;
+    stroke-width: 0px !important;
+}
+.small_window_path {
+    fill: #28B767 !important;
+    stroke-width: 0px !important;
+}
+.wing_shadow {
+    display: block !important;
+    fill: #FC9252 !important;
+}
+.wing_base {
+    fill: #E16E36 !important;
+    stroke-width: 0px !important;
+}
+.rocket_bottom {
+    fill: #2DCB73 !important;
+    stroke-width: 0px !important;
+}
+.large_window_path {
+    fill: url(#SVGID_2_) !important;
+    stroke-width: 0px !important;
+}
+.rocket_inner { transform: translateY(0px) translateX(-3px) !important; }
+
+/*=============================================
+[ Animation Classes ]
+==============================================*/
+.fire {
+    @include inline-block();
+    animation-delay: 0s;
+    fill-opacity: 1;
+    stroke-width: 0px;
+
+    @include animation-timing-function(ease-in);
+    @include animation-iteration-count(infinite);
+    @include animation-timing-function(linear);
+    @include animation-direction(normal);
+
+    -webkit-transform-origin: 50% 50%;
+}
+#fireLeft {
+    display: block;
+    @include animation-delay(0s);
+    @include animation-name(fireLeft, fillOpacity1);
+    @include animation-duration(1.2s);
+}
+#fireMiddle {
+    display: block;
+    @include animation-delay(0s);
+    @include animation-name(fireMiddle, fillOpacity1);
+    @include animation-duration(1s);
+}
+#fireRight {
+    display: block;
+    @include animation-delay(0s);
+    @include animation-name(fireRight, fillOpacity1);
+    @include animation-duration(1.3s);
+}
+#fireSmallLeft {
+    display: block;
+    @include animation-delay(0s);
+    @include animation-name(fireSmall, fillOpacity2);
+    @include animation-duration(1.3s);
+    @include transform-origin(bottom);
+}
+#fireSmallRight {
+    display: block;
+    @include animation-delay(0.3s);
+    @include animation-name(fireSmall, fillOpacity3);
+    @include animation-duration(1.6s);
+    @include transform-origin(bottom);
+}
+
+
+// .fire {
+//     display: none;
+//     animation-delay: 0s;
+//     fill-opacity: 1;
+//     animation-timing-function: ease-in;
+//     stroke-width: 0px;
+//     animation-iteration-count: infinite;
+//     animation-timing-function: linear;
+//     transform-origin: 50% 50%;
+//     animation-direction: normal;
+// }
+// .rocket_wrap:hover #fireLeft {
+//     display: block;
+//     animation-delay: 0s;
+//     animation-name: fireLeft, fillOpacity1;
+//     animation-duration: 1.2s;
+// }
+// .rocket_wrap:hover #fireMiddle {
+//     display: block;
+//     animation-delay: 0s;
+//     animation-name: fireMiddle, fillOpacity1;
+//     animation-duration: 1s;
+// }
+// .rocket_wrap:hover #fireRight {
+//     display: block;
+//     animation-delay: 0s;
+//     animation-name: fireRight, fillOpacity1;
+//     animation-duration: 1.3s;
+// }
+// .rocket_wrap:hover #fireSmallLeft {
+//     display: block;
+//     animation-delay: 0s;
+//     animation-name: fireSmall, fillOpacity2;
+//     animation-duration: 1.3s;
+//     transform-origin: bottom;
+// }
+// .rocket_wrap:hover #fireSmallRight {
+//     display: block;
+//     animation-delay: 0.3s;
+//     animation-name: fireSmall, fillOpacity3;
+//     animation-duration: 1.6s;
+//     transform-origin: bottom;
+// }
+
+/*=============================================
+[ KeyFrame Animations ]
+==============================================*/
+@-webkit-keyframes fireSmall {
+    10% { -webkit-transform: rotate(17deg) translateY(1px) }
+    20% { -webkit-transform: rotate(-13deg) translateY(2px) }
+    30% { -webkit-transform: rotate(21deg) translateY(3px) }
+    40% { -webkit-transform: rotate(-34deg)translateY(4px) }
+    50% { -webkit-transform: rotate(24deg) translateY(5px) }
+    60% { -webkit-transform: rotate(-17deg) translateY(6px) }
+    70% { -webkit-transform: rotate(31deg) translateY(7px) }
+    80% { -webkit-transform: rotate(-28deg) translateY(8px) }
+    90% { -webkit-transform: rotate(14deg) translateY(9px) }
+    99% { -webkit-transform: rotate(0deg) translateY(10px) }
+}
+@-webkit-keyframes fireLeft {
+    6% { -webkit-transform: rotate(25deg) }
+    15% { -webkit-transform: rotate(-19deg) }
+    25% { -webkit-transform: rotate(25deg) }
+    32% { -webkit-transform: rotate(-30deg) }
+    46% { -webkit-transform: rotate(22deg) }
+    54% { -webkit-transform: rotate(-29deg) }
+    61% { -webkit-transform: rotate(32deg) }
+    74% { -webkit-transform: rotate(-9deg) }
+    83% { -webkit-transform: rotate(16deg) }
+    99% { -webkit-transform: rotate(0deg) }
+}
+@-webkit-keyframes fireMiddle {
+    10% { -webkit-transform: rotate(25deg) }
+    20% { -webkit-transform: rotate(-25deg) }
+    30% { -webkit-transform: rotate(30deg) }
+    40% { -webkit-transform: rotate(-22deg) }
+    50% { -webkit-transform: rotate(29deg) }
+    60% { -webkit-transform: rotate(-45deg) }
+    70% { -webkit-transform: rotate(37deg) }
+    80% { -webkit-transform: rotate(-15deg) }
+    90% { -webkit-transform: rotate(16deg) }
+    99% { -webkit-transform: rotate(0deg) }
+}
+@-webkit-keyframes fireRight {
+    15% { -webkit-transform: rotate(17deg) }
+    23% { -webkit-transform: rotate(-13deg) }
+    37% { -webkit-transform: rotate(21deg) }
+    45% { -webkit-transform: rotate(-34deg) }
+    54% { -webkit-transform: rotate(24deg) }
+    67% { -webkit-transform: rotate(-17deg) }
+    72% { -webkit-transform: rotate(31deg) }
+    84% { -webkit-transform: rotate(-28deg) }
+    96% { -webkit-transform: rotate(14deg) }
+    99% { -webkit-transform: rotate(0deg) }
+}
+
+
+
+@-webkit-keyframes fillOpacity1 {
+    0% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    50% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    100% {
+        fill-opacity: 0;
+        stroke-opacity: 0;
+    }
+}
+@-webkit-keyframes fillOpacity2 {
+    0% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    25% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    100% {
+        fill-opacity: 0;
+        stroke-opacity: 0;
+    }
+}
+@-webkit-keyframes fillOpacity3 {
+    0% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    67% {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+    100% {
+        fill-opacity: 0;
+        stroke-opacity: 0;
+    }
+}
+@-webkit-keyframes rocektMove {
+    0% { transform: translateY(0px) }
+    100% { transform: translateY(20px) }
+}
+
