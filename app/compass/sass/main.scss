@@ -4,7 +4,11 @@
 // @import "mixins/retina";
 @import "rocket";
 @import "tree";
+@import "slider";
 
+@mixin avatar($name) {
+    background: generated-image-url('/images/avatar-' + $name +'.png') 0 0 no-repeat;
+}
 
 @mixin keyframes-floating($name, $para) {
     @-webkit-keyframes #{$name} {
@@ -144,7 +148,11 @@ html,
 }
 
 body {
-    @include transform-style(preserve-3d);
+    @include translate3d(0, 0, 0);
+    @include transition-property(background-position);
+    @include transition-duration(.6s);
+    @include transition-timing-function(ease-in);
+    // @include transform-style(preserve-3d);
 
     width: 100%;
     height: 100%;
@@ -152,7 +160,7 @@ body {
     position: relative;
     padding: 0;
     text-align: center;
-    background: #0d3361 url(/images/bg_pattern.png) repeat;
+    background: #0d3361 url(/images/stars-1.png) repeat;
     font: 12px /1.8 "Roboto", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -166,8 +174,8 @@ body {
 }
 
 #wheels {
-    @include rotate(0deg);
-    @include translate3d(0, 0, 0);
+    @include rotate(-180deg);
+    // @include translate3d(0, 0, 0);
 
     position: absolute;
     top: 0;
@@ -216,7 +224,7 @@ body {
     @include inline-block();
 
     position: relative;
-    top: 150px;
+    top: 100px;
 
     &:before,
     &:after {
@@ -344,18 +352,13 @@ body {
     }
 }
 
-
-// page 1
-.welcome-home {
-    top: -500px;
-    left: 500px;
-}
-
+// members
 .members {
     position: absolute;
     z-index: 2;
     top: 50%;
     width: 100%;
+    line-height: 0;
 
     .member {
         @include inline-block();
@@ -442,20 +445,27 @@ body {
     .member-12 {
         // @include translate3d(0, 0, 0);
         @include filter(sepia(220%));
+        @include rotate(30deg);
         // @include transform(rotate(10deg));
 
         position: relative;
-        left: -750px;
+        left: -250px;
         width: 100px;
         height: 100px;
         margin-top: -370px;
         background: generated-image-url('/images/member-2.png') 0 0 no-repeat;
     }
+}
 
-    .member.float {
-        @include translate3d(0, 0, 0);
-        @include animation(floating 3s infinite ease-in-out);
-    }
+// page 1
+.welcome-home {
+    top: -500px;
+    left: 500px;
+}
+
+.page-1 .member.float {
+    @include translate3d(0, 0, 0);
+    @include animation(floating 3s infinite ease-in-out);
 }
 
 #rocket {
@@ -502,15 +512,117 @@ body {
     top: -500px;
     left: 500px;
 
-
     .member-7 {
-        @include scaleX(-1);
-        @include filter(hue-rotate(120deg));
+        @include filter(hue-rotate(0deg));
 
-        margin-top: -100px;
-        margin-bottom: 0px;
+        position: relative;
+        left: 270px;
+        width: 66px;
+        height: 110px;
+        background: generated-image-url('/images/member-4.png') 0 0 no-repeat;
+    }
+
+    .member-8 {
+        @include scaleX(1);
+        @include filter(hue-rotate(0deg));
+
+        width: 110px;
+        height: 114px;
+        margin-bottom: -220px;
+        margin-left: 300px;
+        background: generated-image-url('/images/member-3.png') 0 0 no-repeat;
+    }
+
+
+    #stage {
+        margin: 150px auto 0 auto;
+    }
+
+    #slider {
+        @include scale(0);
+
+        width: 500px;
+        margin: 0 auto;
+        padding-bottom: 200px;
+        overflow: hidden;
+    }
+
+    .bx-wrapper {
+        border: 5px solid #6576A4;
+        border-bottom-color: #8593b7;
+    }
+
+    .bx-viewport {
+        @include box-sizing(border-box);
+
+        overflow: visible !important;
+        background: #24273a;
+
+        .bxslider {
+            font-size: 40px;
+            line-height: 150px;
+            color: #eee;
+        }
+
+        li {
+            position: relative;
+            margin: 0 5px;
+        }
+    }
+
+    .items {
+        position: absolute;
+        top: 170px;
+        left: 0;
+        width: 100%;
+        line-height: 1;
+        color: #fff;
+
+        span {
+            @include inline-block();
+
+            position: relative;
+            margin: 0 5px;
+            padding: 0 20px;
+            font-size: 20px;
+            background: #f1cc62;
+            line-height: 60px;
+            text-align: center;
+            vertical-align: top;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: 100%;
+                width: 6px;
+                height: 15px;
+                margin-left: -3px;
+                background: #ac903e;
+            }
+
+            &:after {
+                @include border-radius(50%);
+
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                margin-left: -10px;
+                margin-top: -35px;
+                background: #f1cc62;
+            }
+        }
     }
 }
+
+.page-2 #slider {
+    @include scale(1);
+    @include single-transition(all, 0.3s, 0, ease-in);
+}
+
 
 // page 3
 .who-we-are {
@@ -518,18 +630,85 @@ body {
 
     top: -500px;
     left: 500px;
+
+    .members {
+        height: 400px;
+        // margin-top: -200px;
+        // background: rgba(0, 0, 0, 0.6);
+    }
+
+    .avatar {
+        @include inline-block();
+        @include border-radius(50%);
+        @include box-shadow(0 0 0 3px #222);
+
+        position: relative;
+        width: 80px;
+        height: 80px;
+        background: #c00;
+        border: 5px solid #fff;
+    }
+
+    .avatar-wangye {
+        @include avatar(wangye);
+
+        top: 140px;
+    }
+
+    .avatar-jiyun {
+        @include avatar(jiyun);
+
+        top: 40px;
+    }
+
+    .avatar-wangxiao {
+        @include avatar(wangxiao);
+
+        top: -23px;
+    }
+
+    .avatar-xiaomeng {
+        @include avatar(xiaomeng);
+    }
+
+    .avatar-miaojian {
+        @include avatar(miaojian);
+    }
+
+    .avatar-hailang {
+        @include avatar(hailang);
+    }
+
+    .avatar-ziming {
+        @include avatar(ziming);
+    }
+
+    .avatar-zhailin {
+        @include avatar(zhailin);
+    }
+
+    .avatar-yaochun {
+        @include avatar(yaochun);
+    }
+
+    .avatar-zhenzhou {
+        @include avatar(zhenzhou);
+    }
+
+    .avatar-xiaopeng {
+        @include avatar(xiaopeng);
+    }
 }
 
 // page 4
 .we-are-looking-for {
     @include rotate(270deg);
 
-
     top: -500px;
     left: 500px;
 }
 
-// end
+// end thanks
 #end {
     @include scale(0);
 
@@ -552,6 +731,21 @@ body {
     }
 }
 
+// #stars-overlay {
+//     @include translate3d(0, 0, 0);
+//     @include transition-property(background-position);
+//     @include transition-duration(.6s);
+//     @include transition-timing-function(ease-in);
+
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     z-index: 0;
+//     background: url(/images/stars-2.png) repeat;
+// }
+
 // earth
 #earth {
     @include border-radius(50%);
@@ -572,6 +766,27 @@ body {
         width: 100%;
         background: generated-image-url('/images/land.png') center center no-repeat;
         background-size: 1002px;
+    }
+}
+
+#next-btn {
+    @include border-radius(5px);
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    width: 100px;
+    height: 40px;
+    background: #fccf26;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+        background: #fdda58;
     }
 }
 

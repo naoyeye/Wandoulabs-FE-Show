@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    //- #stars-overlay
     #main
         #wheels
             section.section.welcome-home
@@ -24,7 +25,7 @@ block content
                         li.member.member-12.float
 
                     //- #rocket
-                    svg(version="1.1", x="0px", y="0px", width="307px",height="283px", id="rocket", class="rotate")
+                    svg(version="1.1", x="0px", y="0px", width="307px",height="283px", id="rocket", class="")
 
                         g(class="rocket_wrap")
                             g(class="rocket_inner")
@@ -83,6 +84,29 @@ block content
                                 .ribbon-title What we do
                     ul.members
                         li.member.member-7
+                        li.member.member-8
+
+                    #stage
+                        #slider
+                            ul.bxslider
+                                li Blah~Blah
+                                    .items
+                                        span SnapPea
+                                        span 云相册
+                                        span 豌豆荚官网
+                                li Campaign
+                                    .items
+                                        span 愚人节 One Space
+                                        span Remix Me
+                                        span 这个
+                                li Interesting things
+                                    .items
+                                        span 找豌豆
+                                        span 人民搜索
+                                        span 抽奖
+                                        span 订饭
+
+
 
             section.section.who-we-are
                 .content
@@ -91,7 +115,18 @@ block content
                             .ribbon
                                 .ribbon-title who we are
                     ul.members
-                        li.member.member-7
+                        //- li.member.member-8
+                        li.avatar.avatar-wangye
+                        li.avatar.avatar-jiyun
+                        li.avatar.avatar-wangxiao
+                        li.avatar.avatar-xiaomeng
+                        li.avatar.avatar-miaojian
+                        li.avatar.avatar-hailang
+                        li.avatar.avatar-ziming
+                        li.avatar.avatar-zhailin
+                        li.avatar.avatar-yaochun
+                        li.avatar.avatar-zhenzhou
+                        li.avatar.avatar-xiaopeng
 
             section.section.we-are-looking-for
                 .content
@@ -109,4 +144,6 @@ block content
 
     #end
         h2.title Thanks :P
+
+    #next-btn Next
 
