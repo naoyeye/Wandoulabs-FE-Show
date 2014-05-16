@@ -45,7 +45,7 @@ $(function () {
         curr += 1;
         // console.log('curr', curr);
 
-        if (curr < 4) {
+        if (curr < 3) {
             // nect slider
             slider.goToNextSlide();
         } else {
