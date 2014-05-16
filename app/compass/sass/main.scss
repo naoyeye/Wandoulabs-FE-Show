@@ -6,78 +6,91 @@
 @import "tree";
 @import "slider";
 
+
 @mixin avatar($name) {
     background: generated-image-url('/images/avatar-' + $name +'.png') 0 0 no-repeat;
+}
+
+@-webkit-keyframes expand {
+    from {
+        opacity: 1;
+        -webkit-transform: scale(0);
+    }
+    to {
+        opacity: 0;
+        -webkit-transform: scale(2);
+    }
+
 }
 
 @mixin keyframes-floating($name, $para) {
     @-webkit-keyframes #{$name} {
         from {
-            -webkit-transform:translate(0, 0) rotate(30deg);
+            -webkit-transform:translate(0, 0);
         }
 
         65% {
-            -webkit-transform:translate(0, $para) rotate(30deg);
+            -webkit-transform:translate(0, $para);
         }
 
         to {
-            -webkit-transform: translate(0, 0px) rotate(30deg);
+            -webkit-transform: translate(0, 0px);
         }
     }
 
     @-moz-keyframes #{$name} {
         from {
-            -moz-transform:translate(0, 0px) rotate(30deg);
+            -moz-transform:translate(0, 0px);
         }
 
         65% {
-            -moz-transform:translate(0, $para) rotate(30deg);
+            -moz-transform:translate(0, $para);
         }
 
         to {
-            -moz-transform: translate(0, 0px) rotate(30deg);
+            -moz-transform: translate(0, 0px);
         }
     }
 
     @-ms-keyframes #{$name} {
         from {
-            -ms-transform:translate(0, 0px) rotate(30deg);
+            -ms-transform:translate(0, 0px);
         }
 
         65% {
-            -ms-transform:translate(0, $para) rotate(30deg);
+            -ms-transform:translate(0, $para);
         }
 
         to {
-            -ms-transform: translate(0, 0px) rotate(30deg);
+            -ms-transform: translate(0, 0px);
         }
     }
 
     @-o-keyframes #{$name} {
         from {
-            -o-transform:translate(0, 0px) rotate(30deg);
+            -o-transform:translate(0, 0px);
         }
 
         65% {
-            -o-transform:translate(0, $para) rotate(30deg);
+            -o-transform:translate(0, $para);
         }
 
         to {
-            -o-transform: translate(0, 0px) rotate(30deg);
+            -o-transform: translate(0, 0px);
         }
     }
 
     @keyframes #{$name} {
         from {
-            transform:translate(0, 0px) rotate(30deg);
+            transform:translate(0, 0px);
         }
 
         65% {
-            transform:translate(0, $para) rotate(30deg);
+            transform:translate(0, $para);
         }
 
         to {
-            transform: translate(0, 0px) rotate(30deg);
+            transform: translate(0, 0px);
         }
     }
 }
@@ -174,8 +187,7 @@ body {
 }
 
 #wheels {
-    @include rotate(0deg);
-    // @include translate3d(0, 0, 0);
+    @include rotate(-270deg);
 
     position: absolute;
     top: 0;
@@ -457,15 +469,27 @@ body {
     }
 }
 
+
+.page-1 .member.float,
+.page-3 .avatar.float {
+    @include translate3d(0, 0, 0);
+    @include animation(floating 3s infinite ease-in-out);
+}
+
+.page-3 .avatar.float-low {
+    @include translate3d(0, 0, 0);
+    @include animation(floating 3s .3s infinite ease-in-out);
+}
+
+.page-3 .avatar.float-low-2 {
+    @include translate3d(0, 0, 0);
+    @include animation(floating 3s .7s infinite ease-in-out);
+}
+
 // page 1
 .welcome-home {
     top: -500px;
     left: 500px;
-}
-
-.page-1 .member.float {
-    @include translate3d(0, 0, 0);
-    @include animation(floating 3s infinite ease-in-out);
 }
 
 #rocket {
@@ -666,85 +690,90 @@ body {
     .avatar-wangye {
         @include avatar(wangye);
 
-        top: 0px;
-        left: 0;
+        top: -270px;
+        left: 520px;
     }
 
     .avatar-jiyun {
         @include avatar(jiyun);
+        @include rotate(-20deg);
 
-        top: 0px;
+        top: 50px;
         left: 80px;
     }
 
     .avatar-wangxiao {
         @include avatar(wangxiao);
 
-        top: 0px;
+        top: -220px;
         left: 160px;
     }
 
     .avatar-xiaomeng {
         @include avatar(xiaomeng);
+        // @include rotate(40deg);
 
-        top: 0px;
-        left: 240px;
+        top: -100px;
+        left: 220px;
     }
 
     .avatar-miaojian {
         @include avatar(miaojian);
 
-        top: 0px;
-        left: 320px;
+        top: -100px;
+        left: 400px;
     }
 
     .avatar-hailang {
         @include avatar(hailang);
 
-        top: 0px;
-        left: 400px;
+        top: -170px;
+        left: 320px;
     }
 
     .avatar-ziming {
         @include avatar(ziming);
 
-        top: 0px;
+        top: -110px;
         left: 480px;
     }
 
     .avatar-zhailin {
         @include avatar(zhailin);
+        @include rotate(10deg);
 
-        top: 0px;
-        left: 560px;
+        top: -100px;
+        left: 570px;
     }
 
     .avatar-yaochun {
         @include avatar(yaochun);
+        @include rotate(20deg);
 
-        top: 0px;
-        left: 640px;
+        top: -60px;
+        left: 660px;
     }
 
     .avatar-zhenzhou {
         @include avatar(zhenzhou);
+        @include rotate(-40deg);
 
-        top: 0;
-        left: 720px;
+        top: 120px;
+        left: 20px;
     }
 
     .avatar-naiping {
         @include avatar(naiping);
 
-        top: 0px;
+        top: -50px;
         left: 800px;
     }
 
     .avatar-xiaopeng {
         @include avatar(xiaopeng);
 
-        top: 0;
-        left: 880px;
+        top: -200px;
+        left: 700px;
     }
 }
 
@@ -759,6 +788,115 @@ body {
 
     top: -500px;
     left: 500px;
+
+    #telescope {
+        @include rotate(10deg);
+
+        position: absolute;
+        top: 360px;
+        right: 250px;
+        width: 236px;
+        height: 229px;
+        background: generated-image-url('/images/telescope.png') center bottom no-repeat;
+
+        .signals {
+            @include rotate(-30deg);
+
+            display: none;
+            position: absolute;
+            top: -190px;
+            left: -230px;
+        }
+
+        .signals span {
+            @include border-radius(500px);
+            @include transform(scale(0));
+            @include animation(expand 5s ease 0s infinite);
+
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border-top: 10px solid #f6e742;
+
+            &:nth-child(2) {
+                @include animation-delay(0.6s);
+            }
+
+            &:nth-child(3) {
+              @include animation-delay(1.2s);
+            }
+
+            &:nth-child(4){
+              @include animation-delay(1.8s);
+            }
+        }
+    }
+
+    #keywords {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        // background: #c00;
+    }
+
+    #fish-wrap {
+        @include rotate(-35deg);
+
+        position: absolute;
+        top: 50%;
+        left: 120px;
+        width: 300px;
+        height: 150px;
+        // background: green;
+        overflow: hidden;
+    }
+
+    #fish {
+        @include inline-block();
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 112px;
+        height: 74px;
+        background: url(/images/fish.png) 0 0 no-repeat;
+
+        &.jump {
+            -webkit-animation: bounce 2s infinite linear;
+            -moz-animation: bounce 2s infinite linear;
+            animation: bounce 2s infinite linear;
+        }
+    }
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        top: 100%;
+        left: 0%;
+        -webkit-transform: translateY(50%);
+        -webkit-transform: rotate(-45deg);
+    }
+
+    50% {
+        top: 30%;
+        left: 30%;
+        // -webkit-transform: translateY(-250px);
+    }
+
+    100% {
+        top: 110%;
+        left: 60%;
+        -webkit-transform: translateY(50%);
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+.page-4 .we-are-looking-for #telescope .signals {
+    display: block;
 }
 
 // end thanks

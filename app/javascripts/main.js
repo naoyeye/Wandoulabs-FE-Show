@@ -27,6 +27,25 @@ $(function () {
         // }
     });
 
+    // $(document).keydown(function (e) {
+    //     if (e.keyCode === 39) {
+    //         // clickNextBind(e);
+    //         if (pageNum === 2) {
+    //             // slider control
+    //             sliderControl();
+    //             // slider.goToNextSlide();
+    //             // return false;
+    //         } else {
+    //             // page control
+    //             pageControl();
+    //         }
+    //         return false;
+    //     } else if (e.keyCode === 37) {
+    //         // clickPrevBind(e);
+    //         return false;
+    //     }
+    // });
+
 
     nextBtn.click(function () {
 
@@ -46,10 +65,13 @@ $(function () {
         // console.log('curr', curr);
 
         if (curr < 3) {
-            // nect slider
+            // next slider
+            console.log('下一个 slide');
+            console.log('slider', slider);
             slider.goToNextSlide();
         } else {
             // page control
+            console.log('下一页');
             pageControl();
             // console.log('next!');
         }
@@ -57,19 +79,20 @@ $(function () {
 
     function pageControl() {
         // no infinite loop
-        if (deg < -270) {
-            $('#main').transition({
-                opacity: 0,
-                scale: 0,
-            }, 400);
 
-            // show end thanks
-            $('#end').transition({
-                scale: 1
-            }, 550);
+        // if (deg < -270) {
+        //     $('#main').transition({
+        //         opacity: 0,
+        //         scale: 0,
+        //     }, 400);
 
-        } else {
-            starsParallaxScroll();
+        //     // show end thanks
+        //     $('#end').transition({
+        //         scale: 1
+        //     }, 550);
+        // } else {
+
+            // starsParallaxScroll();
 
             // normal
             $('#wheels').transition({
@@ -85,7 +108,7 @@ $(function () {
                 body.removeClass().addClass('page-' + pageNum);
 
             });
-        }
+        // }
     }
 
     function starsParallaxScroll() {
