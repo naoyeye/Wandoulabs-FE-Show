@@ -80,19 +80,29 @@ $(function () {
     function pageControl() {
         // no infinite loop
 
-        // if (deg < -270) {
-        //     $('#main').transition({
-        //         opacity: 0,
-        //         scale: 0,
-        //     }, 400);
+        if (deg < -270) {
+            $('#main').transition({
+                opacity: 0,
+                scale: 0,
+            }, 600, function () {
+                // show end thanks
+                $('#end').show().transition({
+                    scale: 1,
+                    opacity: 1
+                }, 300, function () {
+                    $('#end .title').transition({
+                        scale : 1
+                    }, 300);
+                });
+            });
 
-        //     // show end thanks
-        //     $('#end').transition({
-        //         scale: 1
-        //     }, 550);
-        // } else {
 
-            // starsParallaxScroll();
+
+            $('#next-btn').hide();
+
+        } else {
+
+            starsParallaxScroll();
 
             // normal
             $('#wheels').transition({
@@ -108,7 +118,7 @@ $(function () {
                 body.removeClass().addClass('page-' + pageNum);
 
             });
-        // }
+        }
     }
 
     function starsParallaxScroll() {
