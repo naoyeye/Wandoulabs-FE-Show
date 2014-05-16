@@ -174,7 +174,7 @@ body {
 }
 
 #wheels {
-    @include rotate(-180deg);
+    @include rotate(0deg);
     // @include translate3d(0, 0, 0);
 
     position: absolute;
@@ -632,7 +632,11 @@ body {
     left: 500px;
 
     .members {
+        @include single-transition(opacity, 0.3s, 0, ease-in);
+
         height: 400px;
+        opacity: 0;
+        // visibility: hidden;
         // margin-top: -200px;
         // background: rgba(0, 0, 0, 0.6);
     }
@@ -640,64 +644,113 @@ body {
     .avatar {
         @include inline-block();
         @include border-radius(50%);
-        @include box-shadow(0 0 0 3px #222);
+        @include box-shadow(0 0 0 3px #fff inset);
 
-        position: relative;
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 80px;
         height: 80px;
-        background: #c00;
-        border: 5px solid #fff;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            bottom: -48px;
+            width: 80px;
+            height: 72px;
+            background: generated-image-url('/images/avatar-body.png') center bottom no-repeat;
+        }
     }
 
     .avatar-wangye {
         @include avatar(wangye);
 
-        top: 140px;
+        top: 0px;
+        left: 0;
     }
 
     .avatar-jiyun {
         @include avatar(jiyun);
 
-        top: 40px;
+        top: 0px;
+        left: 80px;
     }
 
     .avatar-wangxiao {
         @include avatar(wangxiao);
 
-        top: -23px;
+        top: 0px;
+        left: 160px;
     }
 
     .avatar-xiaomeng {
         @include avatar(xiaomeng);
+
+        top: 0px;
+        left: 240px;
     }
 
     .avatar-miaojian {
         @include avatar(miaojian);
+
+        top: 0px;
+        left: 320px;
     }
 
     .avatar-hailang {
         @include avatar(hailang);
+
+        top: 0px;
+        left: 400px;
     }
 
     .avatar-ziming {
         @include avatar(ziming);
+
+        top: 0px;
+        left: 480px;
     }
 
     .avatar-zhailin {
         @include avatar(zhailin);
+
+        top: 0px;
+        left: 560px;
     }
 
     .avatar-yaochun {
         @include avatar(yaochun);
+
+        top: 0px;
+        left: 640px;
     }
 
     .avatar-zhenzhou {
         @include avatar(zhenzhou);
+
+        top: 0;
+        left: 720px;
+    }
+
+    .avatar-naiping {
+        @include avatar(naiping);
+
+        top: 0px;
+        left: 800px;
     }
 
     .avatar-xiaopeng {
         @include avatar(xiaopeng);
+
+        top: 0;
+        left: 880px;
     }
+}
+
+.page-3 .who-we-are .members {
+    // visibility: visible;
+    opacity: 1;
 }
 
 // page 4
