@@ -615,7 +615,7 @@ body {
             margin: 0 5px;
             padding: 0 20px;
             font-size: 20px;
-            background: #f1cc62;
+            background: #ea4e38;
             line-height: 60px;
             text-align: center;
             vertical-align: top;
@@ -628,7 +628,7 @@ body {
                 width: 6px;
                 height: 15px;
                 margin-left: -3px;
-                background: #ac903e;
+                background: #c74230;
             }
 
             &:after {
@@ -642,7 +642,7 @@ body {
                 height: 20px;
                 margin-left: -10px;
                 margin-top: -35px;
-                background: #f1cc62;
+                background: #ea5f4b;
             }
         }
     }
@@ -860,8 +860,8 @@ body {
         li:nth-child(1) {
             @include animation(blowup-1 1.5s .4s infinite linear);
 
-            top: -150px;
-            left: 200px;
+            top: -180px;
+            left: 170px;
             font-size: 50px;
         }
 
