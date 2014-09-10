@@ -1,13 +1,18 @@
 doctype html
-//- if lt IE 7
-    html.no-js.lt-ie9.lt-ie8.lt-ie7
-//- if IE 7
-    html.no-js.lt-ie9.lt-ie8
-//- if IE 8
-    html.no-js.lt-ie9
-//- [if gt IE 8] <!
-html.no-js(lang="en")
-    //- <![endif]
+<!---->
+<!--[if lt IE 7]>
+html(lang='en', class='no-js ie6 oldie')
+<![endif]-->
+<!--[if IE 7]>
+html(lang='en', class='no-js ie7 oldie')
+<![endif]-->
+<!--[if IE 8]>
+html(lang='en', class='no-js ie8 oldie')
+<![endif]-->
+<!-- [if gt IE 8] <!-->
+html(lang='en', class='no-js')
+    <!---->
+    <!-- <![endif]-->
 
     head
         meta(name="description", content="blah..blah...")
@@ -20,19 +25,23 @@ html.no-js(lang="en")
         title FE-SHOW
 
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no, minimal-ui")
-
-        //- build:css(.tmp) /stylesheets/main.min.css
+        <!---->
+        <!-- build:css(.tmp) /stylesheets/main.min.css -->
+        <!---->
         link(href='http://fonts.googleapis.com/css?family=Special+Elite|Roboto:100,300,400,500,700,900', rel='stylesheet')
         link(rel="stylesheet", href="/stylesheets/main.css")
-        //- endbuild
+        <!---->
+        <!-- endbuild -->
 
     body.page-1
         block content
 
-        //- build:js(app) /javascripts/main-pack.js
+        <!---->
+        <!-- build:js(app) /javascripts/main-pack.js -->
+        <!---->
         script(src="/components/jquery/dist/jquery.js")
-        //- script(src="/components/modernizr/modernizr.js")
         script(src="/javascripts/jquery.bxslider.min.js")
         script(src="/javascripts/jquery.transit.js")
         script(src="/javascripts/main.js")
-        //- endbuild
+        <!---->
+        <!-- endbuild -->

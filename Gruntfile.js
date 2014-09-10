@@ -95,7 +95,7 @@ module.exports = function (grunt) {
             server : '<%= paths.tmp %>'
         },
         useminPrepare : {
-            html : ['<%= paths.app %>/**/*.html'],
+            html : ['<%= paths.dist %>/templates/index.html'],
             options : {
                 dest : '<%= paths.dist %>'
             }
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
         concurrent: {
             server : ['compass:server', 'copy:images'],
             // staging : ['copy:dist', 'copy:js'],
-            // dist : ['copy:dist', 'compass:dist', 'copy:js']
+            dist : ['copy:dist', 'compass:dist', 'copy:js']
         },
         jshint : {
             options : {
@@ -274,8 +274,9 @@ module.exports = function (grunt) {
                 options: {
                     data: {
                         debug : true,
-                        timestamp: '<%= new Date().getTime() %>'
-                    }
+                        timestamp: '<%= new Date().getTime() %>',
+                    },
+                    pretty: true
                 },
                 files: [{
                     expand: true,
@@ -288,8 +289,9 @@ module.exports = function (grunt) {
             compile: {
                 options: {
                     data: {
-                        debug : false
-                    }
+                        debug : false,
+                    },
+                    pretty: true
                 },
                 files: [{
                     expand: true,
